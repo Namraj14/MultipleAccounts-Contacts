@@ -3,22 +3,22 @@
 global class AccountContactMgmt {
     
     @HttpPost
-    global static String createMultipleAccounts(AccountContactWrapper inputWrapper){
-        try{
+    global static String createMultipleAccounts() {
+        RestRequest req = RestContext.request;
+        String jsonBody = req.requestBody.toString();
+        AccountContactWrapper inputWrapper = (AccountContactWrapper) JSON.deserialize(jsonBody, AccountContactWrapper.class);
+    
+        try {
             for (AccountContactInfo record : inputWrapper.records) {
-                Account accRecord = record.accountRecord;
-                insert accRecord;
-
-                record.contactRecord.AccountId = accRecord.Id;
+                insert record.accountRecord;
+                record.contactRecord.AccountId = record.accountRecord.Id;
                 insert record.contactRecord;
-                
             }
             return 'All Accounts and Contacts are Successfully Created';
-        } catch (Exception e){
+        } catch (Exception e) {
             return e.getMessage();
         }
     }
-
     global class AccountContactWrapper{
         global List<AccountContactInfo> records {get;set;}
     }
