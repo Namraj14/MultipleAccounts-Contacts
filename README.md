@@ -34,33 +34,33 @@ Keeps your API design clean and scalable
 **📥 Sample JSON Request Payload**
 This is how the external system should send the data to your API:
 
-
 {
   "records": [
     {
-      "accRec": {
-        "Name": "Acme Corp",
-        "Industry": "Manufacturing"
+      "accountRecord": {
+        "Name": "Tech Corp",
+        "Industry": "Technology"
       },
-      "contRec": {
-        "FirstName": "John",
-        "LastName": "Doe",
-        "Email": "john.doe@acme.com"
+      "contactRecord": {
+        "FirstName": "Alice",
+        "LastName": "Johnson",
+        "Email": "alice@techcorp.com"
       }
     },
     {
-      "accRec": {
-        "Name": "Tech Innovators",
-        "Industry": "Technology"
+      "accountRecord": {
+        "Name": "Health Inc",
+        "Industry": "Healthcare"
       },
-      "contRec": {
-        "FirstName": "Jane",
+      "contactRecord": {
+        "FirstName": "Bob",
         "LastName": "Smith",
-        "Email": "jane.smith@techinnovators.com"
+        "Email": "bob@healthinc.com"
       }
     }
   ]
 }
+
 
 **✅ Benefits of This Design**
 Modular & Clean: Separates each Account-Contact pair logically
